@@ -361,12 +361,25 @@
 .ticket-h {
   color: #fff;
   border-radius: 16px;
-  border: 1px solid #24a0b5;
   background: rgba(3, 30, 33, 0.1);
   backdrop-filter: blur(2px);
 }
+.ticket-h {
+  border: 1px solid #24a0b5;
+}
 .ticket-subcontent {
   padding: 20px;
+  background-image: radial-gradient(
+      circle at top left,
+      transparent 25px,
+      #07373f 15px
+    ),
+    radial-gradient(circle at top right, transparent 25px, #07373f 15px),
+    radial-gradient(circle at bottom left, transparent 25px, #07373f 15px),
+    radial-gradient(circle at bottom right, transparent 25px, #07373f 15px);
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: top left, top right, bottom left, bottom right;
 }
 .ticket-h {
   padding: 14px;
