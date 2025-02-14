@@ -49,8 +49,8 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
           <div className="first-content-a">
             <p className="first-content-textb">Upload Profile Photo</p>
             <div className="upload-box">
-              <div className="upload" onClick={() => widgetRef.current.open()}>
-                <img src={Upload} alt="upload" />
+              <div className="upload" >
+                <img src={Upload} alt="upload" onClick={() => widgetRef.current.open()}/>
                 <p>Drag & drop or click to upload</p>
               </div>
             </div>
