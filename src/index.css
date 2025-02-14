@@ -1,10 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  /* margin: 0;
-  display: flex;
-  place-items: center;
+  margin: 0;
+  padding: 0;
   min-width: 320px;
-  min-height: 100vh; */
-  background-color: #0e464f;
+  min-height: 100vh;
+  background: radial-gradient(
+      52.52% 32.71% at 50% 97.66%,
+      rgba(36, 160, 181, 0.2) 0%,
+      rgba(36, 160, 181, 0) 100%
+    ),
+    #02191d;
 }
 
 /* button {

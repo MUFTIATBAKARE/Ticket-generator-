@@ -40,11 +40,11 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
   return (
     <div className="content_container">
       <div className="content">
-        <p className="big">Attendee Details</p>
-        <p className="small">Step 2/3</p>
-      </div>
-      <ProgressBar currentPage={page} activeStep={currentStep} />
-      <div className="sub_content">
+        <div className="select-ticket">
+          <p className="big">Attendee Details</p>
+          <p className="small">Step 2/3</p>
+        </div>
+        <ProgressBar currentPage={page} activeStep={currentStep} />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="first-content-a">
             <p className="first-content-textb">Upload Profile Photo</p>
