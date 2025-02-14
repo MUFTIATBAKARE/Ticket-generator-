@@ -367,7 +367,12 @@
 .ticket-h {
   border: 1px solid #24a0b5;
 }
-.ticket-subcontent {
+.ticket-barcode {
+  width: 244px;
+  height: 154px;
+}
+.ticket-subcontent,
+.ticket-barcode {
   padding: 20px;
   background-image: radial-gradient(
       circle at top left,
