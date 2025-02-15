@@ -4,39 +4,28 @@ import ProgressBar from "./ProgressBar";
 import { useForm } from "react-hook-form";
 
 function SelectTicket({ nextStep, page, currentStep }) {
-  const [ticketData, setTicketData] = useState({
-    numberOfTickets: 0,
-    ticketType: "",
-  });
+  const [ticketType, setTicketType] = useState("");
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-    setValue,
   } = useForm();
-
+  const ticketNumber = watch();
   useEffect(() => {
-    localStorage.setItem("ticketData", JSON.stringify(ticketData));
-  }, [ticketData]);
+    if (ticketNumber > 0) {
+      localStorage.setItem("ticketNumber", JSON.stringify(ticketNumber));
+      localStorage.setItem("ticketType", JSON.stringify(ticketType));
+    }
+  }, [ticketNumber, ticketType]);
 
   const onSubmit = () => {
     nextStep();
   };
 
   const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
-
-  const handleTicketChange = (e) => {
-    const value = parseInt(e.target.value, 10);
-    if (value > 0) {
-      setTicketData((prevData) => ({
-        ...prevData,
-        numberOfTickets: value,
-      }));
-      setValue("ticketNumber", value);
-    }
-  };
   const handleTicketTypeClick = (type) => {
-    setTicketData((prevData) => ({
+    setTicketType((prevData) => ({
       ...prevData,
       ticketType: type,
     }));
@@ -103,8 +92,7 @@ function SelectTicket({ nextStep, page, currentStep }) {
           <p className="m"> Number of Tickets</p>
           <select
             id="ticket-number"
-            value={ticketData.numberOfTickets}
-            onChange={handleTicketChange}
+            value={ticketNumber}
             {...register("ticketNumer", { required: true })}
           >
             <option value="" disabled>

@@ -5,36 +5,21 @@ import ProgressBar from "./ProgressBar";
 import Upload from "../assets/cloud-download.svg";
 
 function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
-  const [personalData, setPersonalData] = useState({
-    Name: "",
-    Mail: "",
-    SpecialRequest: "",
-  });
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-
+  const formData = watch();
   useEffect(() => {
-    localStorage.setItem("personalData", JSON.stringify(personalData));
-    console.log(personalData);
-  }, [personalData]);
-
-  const onSubmit = (data) => {
-    setPersonalData({
-      Name: data.Name,
-      mail: data.Mail,
-      SpecialRequest: data.SpecialRequest,
-    });
+    localStorage.setItem("formData", JSON.stringify(formData));
+    console.log(formData);
+  }, [formData]);
+  console.log(localStorage);
+  console.log(formData.mail);
+  const onSubmit = () => {
     nextStep();
-  };
-  const handleRequestChange = (e) => {
-    console.log(e.target.value);
-    setPersonalData((prevData) => ({
-      ...prevData,
-      SpecialRequest: e.target.value,
-    }));
   };
   console.log(localStorage);
   return (
@@ -49,8 +34,12 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
           <div className="first-content-a">
             <p className="first-content-textb">Upload Profile Photo</p>
             <div className="upload-box">
-              <div className="upload" >
-                <img src={Upload} alt="upload" onClick={() => widgetRef.current.open()}/>
+              <div className="upload">
+                <img
+                  src={Upload}
+                  alt="upload"
+                  onClick={() => widgetRef.current.open()}
+                />
                 <p>Drag & drop or click to upload</p>
               </div>
             </div>
@@ -60,13 +49,6 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
             <input
               type="text"
               {...register("Name", { required: true })}
-              value={personalData.Name}
-              onChange={(e) =>
-                setPersonalData((prevData) => ({
-                  ...prevData,
-                  Name: e.target.value,
-                }))
-              }
               aria-invalid={errors.Name ? "true" : "false"}
             />
             {errors.Name?.type === "required" && (
@@ -96,9 +78,17 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
             <textarea
               name="textarea"
               id="textarea"
-              onChange={handleRequestChange}
               placeholder="Textarea"
+              {...register("specialRequest", {
+                required: "Nil, if no request",
+              })}
+              aria-invalid={errors.specialRequest ? "true" : "false"}
             ></textarea>
+            {errors.specialRequest && (
+              <p role="alert" className="alert">
+                {errors.specialRequest.message}
+              </p>
+            )}
           </div>
           <div className="call-action">
             <button className="back">Back</button>

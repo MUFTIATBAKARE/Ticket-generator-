@@ -3,23 +3,25 @@ import PropTypes from "prop-types";
 import ProgressBar from "./ProgressBar";
 
 function TicketReady({ page, currentStep }) {
-  const [ticketData, setTicketData] = useState({
-    numberOfTickets: 0,
-    ticketType: "",
-  });
+  const [ticketNumber, setTicketNumber] = useState(0);
+  const [ticketType, setTicketType] = useState("");
   const [personalData, setPersonalData] = useState({
     Name: "",
-    Mail: "",
-    SpecialRequest: "",
+    mail: "",
+    specialRequest: "",
   });
   const [imageUrl, setImageUrl] = useState("");
   useEffect(() => {
-    const storedTicketData = localStorage.getItem("ticketData");
-    const storedPersonalData = localStorage.getItem("personalData");
+    const storedTicketNumber = localStorage.getItem("ticketNumber");
+    const storedTicketType = localStorage.getItem("ticketType");
+    const storedPersonalData = localStorage.getItem("formData");
     const storedImageUrl = localStorage.getItem("imageUrl");
 
-    if (storedTicketData) {
-      setTicketData(JSON.parse(storedTicketData));
+    if (storedTicketNumber) {
+      setTicketNumber(JSON.parse(storedTicketNumber));
+    }
+    if (storedTicketType) {
+      setTicketType(JSON.parse(storedTicketType));
     }
     if (storedPersonalData) {
       setPersonalData(JSON.parse(storedPersonalData));
@@ -62,23 +64,23 @@ function TicketReady({ page, currentStep }) {
                 </span>
                 <span className="i">
                   <label>mail</label>
-                  <p>{personalData.Mail}</p>
+                  <p>{personalData.mail}</p>
                 </span>
               </div>
               <div className="xa k">
                 <span>
                   <label>Ticket Type</label>
-                  <p>{ticketData.ticketType}</p>
+                  <p>{ticketType}</p>
                 </span>
                 <span className="i">
                   <label>Ticket No</label>
-                  <p>{ticketData.numberOfTickets}</p>
+                  <p>{ticketNumber}</p>
                 </span>
               </div>
               <div>
                 <span>
                   <label>Special request?</label>
-                  <p>{personalData.SpecialRequest}</p>
+                  <p>{personalData.specialRequest}</p>
                 </span>
               </div>
             </div>
