@@ -367,9 +367,11 @@
 .ticket-h {
   border: 1px solid #24a0b5;
 }
+
 .ticket-barcode {
-  width: 244px;
+  width: 300px;
   height: 154px;
+  margin-top: 8px;
 }
 .ticket-subcontent,
 .ticket-barcode {
@@ -385,6 +387,40 @@
   background-size: 50% 50%;
   background-repeat: no-repeat;
   background-position: top left, top right, bottom left, bottom right;
+}
+.ticket-barcode:before,
+.ticket-barcode:after {
+  box-sizing: border-box;
+  position: absolute;
+  color: #fff;
+}
+.ticket-barcode:before {
+  text-align: center;
+}
+.ticket-barcode:after {
+  text-align: right;
+}
+.ticket-barcode:before {
+  content: "|||||||||||||||||";
+  font-size: 32px;
+  font-weight: 200;
+  background-image: linear-gradient(45deg, transparent 75%, #07373f 75%),
+    linear-gradient(135deg, transparent 75%, #07373f 75%);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  background-position: 0 0, 0 0, 100% 0, 100% 0;
+  width: 255px;
+  height: 200px;
+  bottom: -725px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+.ticket-barcode:after {
+  content: "3 547 888 \a 347 268";
+  white-space: pre;
+  font-size: 10px;
+  bottom: -640px;
+  right: 168px;
 }
 .ticket-h {
   padding: 14px;
@@ -421,14 +457,48 @@
   width: 140px;
   height: 140px;
 }
+.avatar {
+  border-radius: 12px;
+  width: 140px;
+  height: 140px;
+}
 .x {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  border: 4px solid rgba(36, 160, 181, 0.5);
+  border: 1px solid rgba(36, 160, 181, 0.5);
+  padding: 4px;
+  width: 232px;
 }
 .xa {
   display: flex;
+  justify-content: space-between;
+}
+.xa span {
+  width: 108px;
+}
+.x label {
+  opacity: 0.33;
+  font-size: 10px;
+  font-family: Roboto;
+  line-height: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+.x p {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+.k {
+  border-bottom: 1px solid rgba(36, 160, 181, 0.5);
+}
+.i {
+  border-left: 1px solid rgba(36, 160, 181, 0.5);
+  padding-left: 4px;
 }
 .ticket-h span {
   display: flex;
@@ -649,7 +719,30 @@
     text-align: center;
     padding: 24px;
   }
+  .ticket-barcode:before {
+    content: "|||||||||||||";
+    font-size: 32px;
+    font-weight: 200;
+    background-image: linear-gradient(45deg, transparent 75%, #07373f 75%),
+      linear-gradient(135deg, transparent 75%, #07373f 75%);
+    background-size: 8px 8px;
+    background-repeat: repeat-x;
+    background-position: 0 0, 0 0, 100% 0, 100% 0;
+    width: 255px;
+    height: 200px;
+    bottom: -802px;
+    padding: 50px;
+    box-sizing: border-box;
+  }
+  .ticket-barcode:after {
+    content: "3 547 888 \a 347 268";
+    white-space: pre;
+    font-size: 10px;
+    bottom: -720px;
+    right: 346px;
+  }
 }
+
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .header {
     display: flex;
@@ -806,7 +899,29 @@
     left: 25%;
     top: -8%;
     text-align: center;
-    padding: 24px;
+    padding: 0px;
+  }
+  .ticket-barcode:before {
+    content: "|||||||||||||";
+    font-size: 32px;
+    font-weight: 200;
+    background-image: linear-gradient(45deg, transparent 75%, #07373f 75%),
+      linear-gradient(135deg, transparent 75%, #07373f 75%);
+    background-size: 8px 8px;
+    background-repeat: repeat-x;
+    background-position: 0 0, 0 0, 100% 0, 100% 0;
+    width: 255px;
+    height: 200px;
+    bottom: -800px;
+    padding: 50px;
+    box-sizing: border-box;
+  }
+  .ticket-barcode:after {
+    content: "3 547 888 \a 347 268";
+    white-space: pre;
+    font-size: 10px;
+    bottom: -720px;
+    right: 474px;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -1083,5 +1198,27 @@
     width: 50%;
     border-radius: var(--Radius-reg, 8px);
     border: 1px solid #24a0b5;
+  }
+  .ticket-barcode:before {
+    content: "|||||||||||||";
+    font-size: 32px;
+    font-weight: 200;
+    background-image: linear-gradient(45deg, transparent 75%, #07373f 75%),
+      linear-gradient(135deg, transparent 75%, #07373f 75%);
+    background-size: 8px 8px;
+    background-repeat: repeat-x;
+    background-position: 0 0, 0 0, 100% 0, 100% 0;
+    width: 255px;
+    height: 200px;
+    bottom: -776px;
+    padding: 58px;
+    box-sizing: border-box;
+  }
+  .ticket-barcode:after {
+    content: "3 547 888 \a 347 268";
+    white-space: pre;
+    font-size: 10px;
+    bottom: -704px;
+    right: 686px;
   }
 }

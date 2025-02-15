@@ -50,25 +50,27 @@ function TicketReady({ page, currentStep }) {
               <p className="z-text">📅 March 15, 2025 | 7:00 PM</p>
             </div>
             <div className="y">
-              {imageUrl && <img src={imageUrl} alt="avatar" />}
+              {imageUrl && (
+                <img src={imageUrl} alt="avatar" className="avatar" />
+              )}
             </div>
             <div className="x">
-              <div className="xa">
+              <div className="xa k">
                 <span>
                   <label>Name</label>
                   <p>{personalData.Name}</p>
                 </span>
-                <span>
+                <span className="i">
                   <label>mail</label>
                   <p>{personalData.Mail}</p>
                 </span>
               </div>
-              <div className="xa">
+              <div className="xa k">
                 <span>
                   <label>Ticket Type</label>
                   <p>{ticketData.ticketType}</p>
                 </span>
-                <span>
+                <span className="i">
                   <label>Ticket No</label>
                   <p>{ticketData.numberOfTickets}</p>
                 </span>
