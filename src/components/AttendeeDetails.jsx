@@ -125,7 +125,7 @@ const UploadWidget = ({ setWidgetRef }) => {
           console.log(result);
           console.log(result.info.secure_url);
           if (result && result.info.secure_url) {
-            const newImageUrl = result.info.secure_url;
+            const newImageUrl = `${result.info.secure_url}/w_400,h_300,c_fill`;
             setImageUrl(newImageUrl);
             localStorage.setItem("imageUrl", JSON.stringify(newImageUrl));
             console.log(newImageUrl);
