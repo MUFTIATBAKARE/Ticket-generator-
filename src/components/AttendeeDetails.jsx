@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import ProgressBar from "./ProgressBar";
 import Upload from "../assets/cloud-download.svg";
+import { toast, ToastContainer } from "react-toastify";
 
-function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
+function AttendeeDetails({ nextStep, widgetRef, page, currentStep, imageUrl }) {
   const {
     register,
     handleSubmit,
@@ -12,14 +13,17 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
     formState: { errors },
   } = useForm();
   const formData = watch();
+
   useEffect(() => {
     localStorage.setItem("formData", JSON.stringify(formData));
     console.log(formData);
   }, [formData]);
-  console.log(localStorage);
-  console.log(formData.mail);
+
+  const notify = () => toast("Please click the cloud icon to upload image");
   const onSubmit = () => {
-    nextStep();
+    if (imageUrl) {
+      nextStep();
+    } else notify();
   };
   console.log(localStorage);
   return (
@@ -35,12 +39,19 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
             <p className="first-content-textb">Upload Profile Photo</p>
             <div className="upload-box">
               <div className="upload">
-                <img
-                  src={Upload}
-                  alt="upload"
-                  onClick={() => widgetRef.current.open()}
-                />
-                <p>Drag & drop or click to upload</p>
+                <div className="blur-upload">
+                  <img
+                    src={Upload}
+                    alt="upload"
+                    onClick={() => widgetRef.current.open()}
+                  />
+                  <p>Drag & drop or click to upload</p>
+                </div>
+                <div className="blur_avatar">
+                  {imageUrl && (
+                    <img src={imageUrl} alt="avatar" id="blur-avatar" />
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -95,6 +106,7 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep }) {
             <button type="submit">Get My Free Ticket</button>
           </div>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
@@ -108,11 +120,11 @@ AttendeeDetails.propTypes = {
       open: PropTypes.func.isRequired,
     }).isRequired,
   }).isRequired,
+  imageUrl: PropTypes.string,
 };
-const UploadWidget = ({ setWidgetRef }) => {
+const UploadWidget = ({ setWidgetRef, setImageUrl }) => {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
-  const [imageUrl, setImageUrl] = useState("");
   useEffect(() => {
     if (window.cloudinary) {
       cloudinaryRef.current = window.cloudinary;
@@ -135,11 +147,12 @@ const UploadWidget = ({ setWidgetRef }) => {
       );
       setWidgetRef(widgetRef);
     }
-  }, [setWidgetRef, imageUrl]);
+  }, [setWidgetRef, setImageUrl]);
 
   return null;
 };
 UploadWidget.propTypes = {
   setWidgetRef: PropTypes.func.isRequired,
+  setImageUrl: PropTypes.func.isRequired,
 };
 export { AttendeeDetails, UploadWidget };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import SelectTicket from "./components/SelectTicket";
 import TicketReady from "./components/TicketReady";
@@ -11,6 +11,15 @@ function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalPages = 3;
   const [widgetRef, setWidgetRef] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    const storedImageUrl = localStorage.getItem("imageUrl");
+    console.log(storedImageUrl);
+    if (storedImageUrl) {
+      setImageUrl(JSON.parse(storedImageUrl));
+    }
+  }, []);
   const nextStep = () => {
     if (page !== totalPages - 1) {
       setPage(page + 1);
@@ -33,12 +42,19 @@ function App() {
           <AttendeeDetails
             nextStep={nextStep}
             widgetRef={widgetRef}
+            imageUrl={imageUrl}
             page={page}
             currentStep={currentStep}
           />
         );
       case 2:
-        return <TicketReady page={page} currentStep={currentStep} />;
+        return (
+          <TicketReady
+            page={page}
+            currentStep={currentStep}
+            imageUrl={imageUrl}
+          />
+        );
       default:
         break;
     }
@@ -59,7 +75,7 @@ function App() {
       </div>
       {ShowNextPage()}
       <div>
-        <UploadWidget setWidgetRef={setWidgetRef} />
+        <UploadWidget setWidgetRef={setWidgetRef} setImageUrl={setImageUrl} />
       </div>
     </>
   );

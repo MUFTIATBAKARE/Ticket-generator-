@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar";
 import Barcode from "../assets/bar-code.svg";
 import Frame from "../assets/bg.svg";
 
-function TicketReady({ page, currentStep }) {
+function TicketReady({ page, currentStep, imageUrl }) {
   const [ticketNumber, setTicketNumber] = useState(0);
   const [ticketType, setTicketType] = useState("");
   const [personalData, setPersonalData] = useState({
@@ -12,12 +12,10 @@ function TicketReady({ page, currentStep }) {
     mail: "",
     specialRequest: "",
   });
-  const [imageUrl, setImageUrl] = useState("");
   useEffect(() => {
     const storedTicketNumber = localStorage.getItem("ticketNumber");
     const storedTicketType = localStorage.getItem("ticketType");
     const storedPersonalData = localStorage.getItem("formData");
-    const storedImageUrl = localStorage.getItem("imageUrl");
 
     if (storedTicketNumber) {
       setTicketNumber(JSON.parse(storedTicketNumber));
@@ -27,9 +25,6 @@ function TicketReady({ page, currentStep }) {
     }
     if (storedPersonalData) {
       setPersonalData(JSON.parse(storedPersonalData));
-    }
-    if (storedImageUrl) {
-      setImageUrl(JSON.parse(storedImageUrl));
     }
   }, []);
   return (
@@ -105,5 +100,6 @@ function TicketReady({ page, currentStep }) {
 TicketReady.propTypes = {
   page: PropTypes.number.isRequired,
   currentStep: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string,
 };
 export default TicketReady;

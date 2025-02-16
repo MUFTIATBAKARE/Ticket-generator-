@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ProgressBar from "./ProgressBar";
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 
 function SelectTicket({ nextStep, page, currentStep }) {
   const [ticketType, setTicketType] = useState("");
@@ -19,9 +20,12 @@ function SelectTicket({ nextStep, page, currentStep }) {
       localStorage.setItem("ticketType", JSON.stringify(ticketType));
     }
   }, [ticketNumber, ticketType]);
-
+  const notify = () =>
+    toast("Please select a ticket type and/or number of tickets");
   const onSubmit = () => {
-    nextStep();
+    if (ticketNumber && ticketType) {
+      nextStep();
+    } else notify();
   };
   const handleTicketTypeClick = (type) => {
     setTicketType(type);
@@ -86,6 +90,8 @@ function SelectTicket({ nextStep, page, currentStep }) {
               </span>
             </span>
           </span>
+          <ToastContainer />
+
           <p className="m"> Number of Tickets</p>
           <select
             id="ticketNumber"

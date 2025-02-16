@@ -280,6 +280,20 @@
   text-align: center;
   padding: 24px;
 }
+.blur-upload {
+  position: absolute;
+  z-index: 1;
+}
+.blur-avatar {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+#blur-avatar {
+  width: 160px;
+  height: 160px;
+  opacity: 0.2;
+}
 .upload p {
   font-family: Roboto;
   font-size: 16px;
@@ -457,6 +471,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
+  word-wrap: break-word;
+  white-space: normal;
 }
 .k {
   border-bottom: 1px solid rgba(36, 160, 181, 0.5);
