@@ -29,6 +29,7 @@ function App() {
   const newTicket = () => {
     setPage(0);
     setCurrentStep(1);
+    localStorage.removeItem("imageUrl");
     setImageUrl("");
   };
   const goBack = () => {

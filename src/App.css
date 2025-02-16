@@ -339,6 +339,7 @@
   border-radius: var(--Radius-reg-2, 12px);
   border: 1px solid rgba(36, 160, 181, 0.5);
   background-color: #07373f;
+  cursor: pointer;
 }
 .form-details textarea {
   height: 127px;
@@ -355,6 +356,16 @@
   background-repeat: no-repeat;
   background-position: 5px;
   padding-left: 40px;
+}
+.form-details input:hover,
+.form-details-a input:hover,
+.form-details textarea:hover {
+  border: 1px solid #07373f;
+}
+.form-details input:focus,
+.form-details-a input:focus,
+.form-details textarea:focus {
+  outline: none;
 }
 .alert {
   color: red;
