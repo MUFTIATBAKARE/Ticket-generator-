@@ -59,7 +59,7 @@ function SelectTicket({ nextStep, page, currentStep }) {
         <form className="second-content" onSubmit={handleSubmit(onSubmit)}>
           <p className="text">Select Ticket Type:</p>
           <span className="flex">
-            <span
+            <div
               className="flex-content"
               onClick={() => handleTicketTypeClick("Regular Access")}
             >
@@ -68,8 +68,8 @@ function SelectTicket({ nextStep, page, currentStep }) {
                 <p className="bold">Regular Access</p>
                 <p className="d">20/52</p>
               </span>
-            </span>
-            <span
+            </div>
+            <div
               className="flex-content"
               onClick={() => handleTicketTypeClick("VIP Access")}
             >
@@ -78,8 +78,8 @@ function SelectTicket({ nextStep, page, currentStep }) {
                 <p className="bold">Vip Access</p>
                 <p className="d">20/52</p>
               </span>
-            </span>
-            <span
+            </div>
+            <div
               className="flex-content"
               onClick={() => handleTicketTypeClick("VVIP Access")}
             >
@@ -88,8 +88,9 @@ function SelectTicket({ nextStep, page, currentStep }) {
                 <p className="bold">VVIP Access</p>
                 <p className="d">20/52</p>
               </span>
-            </span>
+            </div>
           </span>
+
           <ToastContainer />
 
           <p className="m"> Number of Tickets</p>

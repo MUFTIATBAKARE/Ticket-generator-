@@ -190,6 +190,7 @@
 .flex-content {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   padding: 8px;
   gap: 12px;
   width: 242px;
@@ -238,6 +239,12 @@
   border-radius: var(--Radius-reg-2, 12px);
   background: #07373f;
   padding: var(--Radius-reg-2, 12px);
+  cursor: pointer;
+  appearance: none;
+}
+#ticketNumber:focus {
+  outline: none;
+  border: 2px solid #2c545b;
 }
 .call-action button[type="submit"] {
   background-color: #24a0b5;
