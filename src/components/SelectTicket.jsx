@@ -60,7 +60,7 @@ function SelectTicket({ nextStep, page, currentStep }) {
           <p className="text">Select Ticket Type:</p>
           <span className="flex">
             <span
-              className="flex-content a"
+              className="flex-content"
               onClick={() => handleTicketTypeClick("Regular Access")}
             >
               <p className="a-subcontent">Free</p>
@@ -70,7 +70,7 @@ function SelectTicket({ nextStep, page, currentStep }) {
               </span>
             </span>
             <span
-              className="flex-content b"
+              className="flex-content"
               onClick={() => handleTicketTypeClick("VIP Access")}
             >
               <p className="a-subcontent">$50</p>
@@ -80,7 +80,7 @@ function SelectTicket({ nextStep, page, currentStep }) {
               </span>
             </span>
             <span
-              className="flex-content b"
+              className="flex-content"
               onClick={() => handleTicketTypeClick("VVIP Access")}
             >
               <p className="a-subcontent">$150</p>

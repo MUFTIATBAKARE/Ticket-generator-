@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar";
 import Barcode from "../assets/bar-code.svg";
 import Frame from "../assets/bg.svg";
 
-function TicketReady({ page, currentStep, imageUrl }) {
+function TicketReady({ page, currentStep, imageUrl, newTicket }) {
   const [ticketNumber, setTicketNumber] = useState(0);
   const [ticketType, setTicketType] = useState("");
   const [personalData, setPersonalData] = useState({
@@ -91,7 +91,9 @@ function TicketReady({ page, currentStep, imageUrl }) {
         </div>
       </div>
       <div className="call-action">
-        <button className="back">Book Another Ticket</button>
+        <button className="back" onClick={newTicket}>
+          Book Another Ticket
+        </button>
         <button type="submit">Download Ticket</button>
       </div>
     </div>
@@ -99,6 +101,7 @@ function TicketReady({ page, currentStep, imageUrl }) {
 }
 TicketReady.propTypes = {
   page: PropTypes.number.isRequired,
+  newTicket: PropTypes.func.isRequired,
   currentStep: PropTypes.number.isRequired,
   imageUrl: PropTypes.string,
 };

@@ -26,6 +26,15 @@ function App() {
       setCurrentStep(currentStep + 1);
     }
   };
+  const newTicket = () => {
+    setPage(0);
+    setCurrentStep(1);
+    setImageUrl("");
+  };
+  const goBack = () => {
+    setPage(0);
+    setCurrentStep(1);
+  };
 
   const ShowNextPage = () => {
     switch (page) {
@@ -45,6 +54,7 @@ function App() {
             imageUrl={imageUrl}
             page={page}
             currentStep={currentStep}
+            goBack={goBack}
           />
         );
       case 2:
@@ -53,6 +63,7 @@ function App() {
             page={page}
             currentStep={currentStep}
             imageUrl={imageUrl}
+            newTicket={newTicket}
           />
         );
       default:

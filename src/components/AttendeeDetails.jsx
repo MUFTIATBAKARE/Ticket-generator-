@@ -5,7 +5,14 @@ import ProgressBar from "./ProgressBar";
 import Upload from "../assets/cloud-download.svg";
 import { toast, ToastContainer } from "react-toastify";
 
-function AttendeeDetails({ nextStep, widgetRef, page, currentStep, imageUrl }) {
+function AttendeeDetails({
+  nextStep,
+  widgetRef,
+  page,
+  currentStep,
+  imageUrl,
+  goBack,
+}) {
   const {
     register,
     handleSubmit,
@@ -102,7 +109,9 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep, imageUrl }) {
             )}
           </div>
           <div className="call-action">
-            <button className="back">Back</button>
+            <button className="back" onClick={goBack}>
+              Back
+            </button>
             <button type="submit">Get My Free Ticket</button>
           </div>
         </form>
@@ -114,6 +123,7 @@ function AttendeeDetails({ nextStep, widgetRef, page, currentStep, imageUrl }) {
 AttendeeDetails.propTypes = {
   nextStep: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
+  goBack: PropTypes.func.isRequired,
   currentStep: PropTypes.number.isRequired,
   widgetRef: PropTypes.shape({
     current: PropTypes.shape({

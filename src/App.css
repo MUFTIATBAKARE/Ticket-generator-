@@ -221,7 +221,10 @@
   font-size: 24px;
   font-weight: 600;
 }
-.a {
+.flex-content:hover {
+  background: #2c545b;
+}
+.flex-content:active {
   background: #12464e;
 }
 .m {
