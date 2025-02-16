@@ -11,10 +11,11 @@ function SelectTicket({ nextStep, page, currentStep }) {
     watch,
     formState: { errors },
   } = useForm();
-  const ticketNumber = watch();
+  const ticketNumber = watch("ticketNumber");
   useEffect(() => {
     if (ticketNumber > 0) {
       localStorage.setItem("ticketNumber", JSON.stringify(ticketNumber));
+      console.log(ticketNumber);
       localStorage.setItem("ticketType", JSON.stringify(ticketType));
     }
   }, [ticketNumber, ticketType]);
@@ -87,9 +88,11 @@ function SelectTicket({ nextStep, page, currentStep }) {
           </span>
           <p className="m"> Number of Tickets</p>
           <select
-            id="ticket-number"
-            value={ticketNumber}
-            {...register("ticketNumer", { required: true })}
+            id="ticketNumber"
+            {...register("ticketNumber", {
+              required: "please select number of ticket(s)",
+            })}
+            aria-invalid={errors.ticketNumber ? "true" : "false"}
           >
             <option value="" disabled>
               Select a number
@@ -101,7 +104,9 @@ function SelectTicket({ nextStep, page, currentStep }) {
             ))}
           </select>
           {errors.ticketNumber && (
-            <p className="error">Please select a number of tickets.</p>
+            <p role="alert" className="alert">
+              {errors.ticketNumber.message}
+            </p>
           )}
           <div className="call-action">
             <button className="back">Cancel</button>

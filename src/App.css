@@ -229,7 +229,7 @@
   padding-bottom: 8px;
   margin: 0;
 }
-#ticket-number {
+#ticketNumber {
   width: 100%;
   border: 1px solid #07373f;
   border-radius: var(--Radius-reg-2, 12px);
