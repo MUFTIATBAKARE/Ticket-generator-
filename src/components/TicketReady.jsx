@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ProgressBar from "./ProgressBar";
+import Barcode from "../assets/bar-code.svg";
+import Frame from "../assets/bg.svg";
 
 function TicketReady({ page, currentStep }) {
   const [ticketNumber, setTicketNumber] = useState(0);
@@ -45,6 +47,9 @@ function TicketReady({ page, currentStep }) {
           Check your mail for a copy or you can download
         </p>
         <div className="ticket-subcontent">
+          <div className="ticket-frame">
+            <img src={Frame} alt="frame" />
+          </div>
           <div className="ticket-h">
             <div className="z">
               <p className="z-head">Techember Fest ”25</p>
@@ -85,8 +90,10 @@ function TicketReady({ page, currentStep }) {
               </div>
             </div>
           </div>
+          <div className="ticket-barcode">
+            <img src={Barcode} alt="barcode" className="barcode" />
+          </div>
         </div>
-        <div className="ticket-barcode"></div>
       </div>
       <div className="call-action">
         <button className="back">Book Another Ticket</button>

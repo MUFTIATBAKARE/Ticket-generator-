@@ -22,14 +22,10 @@ function SelectTicket({ nextStep, page, currentStep }) {
   const onSubmit = () => {
     nextStep();
   };
-
-  const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
   const handleTicketTypeClick = (type) => {
-    setTicketType((prevData) => ({
-      ...prevData,
-      ticketType: type,
-    }));
+    setTicketType(type);
   };
+  const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
 
   return (
     <div className="content_container">
